@@ -22,7 +22,7 @@ time-in tz --help
 
 If no timezone is passed, this uses [fzf](https://github.com/junegunn/fzf) to let you select a timezone from a list of all timezones/common countries/capitals.
 
-![fzf example](https://github.com/seanbreckenridge/time-in/blob/main/.github/fzf.png?raw=true)
+![fzf example](https://github.com/purarue/time-in/blob/main/.github/fzf.png?raw=true)
 
 ```
 Usage: time-in tz [OPTIONS] [TZ]...
@@ -127,7 +127,7 @@ India       (+12.5)  [Aug 18]  09:30  10:30  11:30  12:30  13:30  14:30
 ### Tests
 
 ```bash
-git clone 'https://github.com/seanbreckenridge/time-in'
+git clone 'https://github.com/purarue/time-in'
 cd ./time_in
 pip install '.[testing]'
 flake8 ./time_in
