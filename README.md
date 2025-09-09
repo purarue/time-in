@@ -4,7 +4,7 @@ CLI tool to figure out the time somewhere else
 
 ## Installation
 
-Requires `python3.9+`
+Requires `python3.10+`
 
 To install with pip, run:
 

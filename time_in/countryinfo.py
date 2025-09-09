@@ -1,5 +1,6 @@
 import zoneinfo
-from typing import TypedDict, List, Iterator
+from typing import TypedDict
+from collections.abc import Iterator
 
 # https://gist.github.com/mjrulesamrat/0c1f7de951d3c508fb3a20b4b0b33a98
 
@@ -12,7 +13,7 @@ class CountryInfo(TypedDict):
     capital: str
 
 
-countries: List[CountryInfo] = [
+countries: list[CountryInfo] = [
     {
         "timezones": ["Europe/Andorra"],
         "code": "AD",

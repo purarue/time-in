@@ -1,4 +1,5 @@
-from typing import List, Any, Iterator, Union, Sequence, Literal, NamedTuple, Optional
+from typing import Any, Union, Literal, NamedTuple, Optional
+from collections.abc import Iterator, Sequence
 
 import os
 import zoneinfo
@@ -211,7 +212,7 @@ def tz(
     assert local_tz is not None, "failed to get local timezone"
 
     # get list of all timezones
-    picked: List[TZWithName] = (
+    picked: list[TZWithName] = (
         [TZWithName.from_str(_tz) for _tz in tz]
         if tz
         else [TZWithName(_pick_timezone(), None)]
@@ -219,13 +220,13 @@ def tz(
 
     assert len(picked) > 0, "no timezones selected"
 
-    dates: List[datetime] = [
+    dates: list[datetime] = [
         *([aware] if print_local else []),
         *(date_.astimezone(p.tz) for p in picked),
     ]
     assert len(dates) > 0, "no dates to print"
 
-    tznames: List[str] = []
+    tznames: list[str] = []
     if print_local:
         if print_local_timezone:
             tznames.append(str(_local_tz()))
@@ -235,12 +236,12 @@ def tz(
     assert len(dates) == len(tznames), "mismatched dates and timezones"
 
     # get the difference in hours between the first timezone (probably yours) and the others
-    diffs: List[float] = [
+    diffs: list[float] = [
         (_make_unaware(dt) - _make_unaware(dates[0])).total_seconds() / 3600
         for dt in dates
     ]
 
-    tzinfos: List[TZInfo] = [
+    tzinfos: list[TZInfo] = [
         TZInfo(dt, tzname, tzdiff) for dt, tzname, tzdiff in zip(dates, tznames, diffs)
     ]
 
@@ -248,9 +249,9 @@ def tz(
         tzinfos.sort(key=lambda tzinfo: tzinfo.tzdiff)
 
     if hours_:
-        rows: List[List[Any]] = []
+        rows: list[list[Any]] = []
         for tzinfo in tzinfos:
-            row: List[Any] = []
+            row: list[Any] = []
             if print_tz:
                 row.append(tzinfo.tzname)
                 row.append(f"({_display_timezone_diff(tzinfo.tzdiff)})")
