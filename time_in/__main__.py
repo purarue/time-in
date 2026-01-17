@@ -52,7 +52,7 @@ def _make_unaware(dt: datetime) -> datetime:
     return dt.replace(tzinfo=None)
 
 
-def _sign(f: Union[float, int]) -> str:
+def _sign(f: float | int) -> str:
     return "+" if f >= 0 else ""
 
 
@@ -89,7 +89,7 @@ def _local_tz() -> zoneinfo.ZoneInfo:
 
 class TZWithName(NamedTuple):
     tz: zoneinfo.ZoneInfo
-    name: Optional[str]
+    name: str | None
 
     @classmethod
     def from_str(cls, s: str) -> "TZWithName":
@@ -197,7 +197,7 @@ def tz(
     print_local_timezone: bool,
     print_tz: bool,
     sort_diffs: bool,
-    round_: Optional[Literal["up", "down", "nearest"]],
+    round_: Literal["up", "down", "nearest"] | None,
     tz: Sequence[str],
 ) -> None:
     if hours_ and hours_ < 1:
