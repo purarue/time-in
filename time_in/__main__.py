@@ -1,4 +1,4 @@
-from typing import Any, Union, Literal, NamedTuple, Optional
+from typing import Any, Literal, NamedTuple
 from collections.abc import Iterator, Sequence
 
 import os
