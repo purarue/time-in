@@ -200,6 +200,15 @@ def tz(
     round_: Literal["up", "down", "nearest"] | None,
     tz: Sequence[str],
 ) -> None:
+    """
+    If no timezone is passed, uses fzf to select a timezone
+
+    If you want to print the time in the future, you can pass a date using the --date flag
+
+    \b
+    To label the timezones differently, you can prepend it with a label:
+    $ time-in tz 'East Coast: US/Eastern' 'UK: Europe/London'
+    """
     if hours_ and hours_ < 1:
         raise click.BadParameter("hours must be >= 1")
 
