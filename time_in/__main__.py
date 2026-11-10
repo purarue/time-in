@@ -45,7 +45,7 @@ def _parse_timezone(s: str) -> zoneinfo.ZoneInfo:
     except zoneinfo.ZoneInfoNotFoundError:
         pass
 
-    raise ValueError(f"failed to parse timezone: {s}")
+    raise click.BadParameter(f"failed to parse timezone: {s}")
 
 
 def _make_unaware(dt: datetime) -> datetime:
